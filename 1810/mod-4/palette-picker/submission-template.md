@@ -1,85 +1,87 @@
 # Palette Picker Submission Form
 
- [Project Spec](http://frontend.turing.io/projects/palette-picker.html)
+[Project Spec](http://frontend.turing.io/projects/palette-picker.html)
 
- # Basics
+# Basics
 
- #### Link to the GitHub Repository for the BE
-[palette-picker BE](https://github.com/shannonmoranetz/palette-picker-api)
+#### Link to the GitHub Repository for the BE
+[palette-picker BE](https://github.com/MRKrog/palette-api)
 
- #### Link to the Deployed BE
-[heroku BE](https://palette-picker-api.herokuapp.com/)
+#### Link to the Deployed BE
+[heroku BE](https://palette-api.herokuapp.com/)
 
- #### Link to the GitHub Repository for the FE
-[palette-picker FE](https://github.com/hlhartley/palette-picker)
+#### Link to the GitHub Repository for the FE
+[palette-picker FE](https://github.com/MRKrog/palette-ui)
 
- #### Link to the Deployed FE
-[heroku FE](https://palit-picker.herokuapp.com/)
+#### Link to the Deployed FE
+[heroku FE](https://paletteui.herokuapp.com/)
 
- ## Completion
+## Completion
 
- #### Were you able to complete the base functionality?
+#### Were you able to complete the base functionality?
 
- Yes we were able to complete the base functionality
+We were able to complete all of the functionality for both the front and backend expectations.
 
- #### Link to an image of your wireframe(s)
-- On GitHub FE repository
+#### Link to an image of your wireframe(s)
+[Main Page](https://raw.githubusercontent.com/MRKrog/palette-ui/master/src/images/palette-picker-wireframe.png)
+[Modal and Pop ups](https://raw.githubusercontent.com/MRKrog/palette-ui/master/src/images/palette-pick-wireframe.png)
 
- #### Which extensions, if any, did you complete?
- 
- - N/A
+#### Which extensions, if any, did you complete?
 
- # Code Quality
+- We did not complete any extensions
 
- #### Link to a specific block of your code on GitHub (from either repository) that you are proud of
-[happy code](https://github.com/hlhartley/palette-picker/blob/master/src/containers/PaletteControls/PaletteControls.js)
+# Code Quality
 
- * Why were you proud of this piece of code?  
-- Lines 30-47: generateRandomColors function. We completely refactored this function, scaled it down, and made it more efficient. We originally generated 5 random colors; however, we didn't account for locking the colors and then being able to generate additional colors to push into that array. We also had to completely restructure our data, and add a isLocked (value = bool) property.
+#### Link to a specific block of your code on GitHub (from either repository) that you are proud of
+[happy code](https://github.com/MRKrog/palette-api/blob/master/app.js)
 
- #### Link to a specific block of your code on GitHub that you feel not great about
-[sad code](https://github.com/hlhartley/palette-picker/blob/master/src/containers/ProjectCard/ProjectCard.js)
+* Why were you proud of this piece of code?
+- Lines 128-143: Delete Project Endpoint. For this endpoint we utilized async await on the backend which provides more readable code with fewer lines. It gave us the ability to easily delete all palettes associated in a project and then the project itself. When we first tried with .then() it was getting really confusing to first check if project has palettes and then delete the palettes followed by the project. We decided to go a different route that was not introduced in class, to challenge ourselves, as well ending up making the rest of the backend endpoints easy to create.
 
- * Why do you feel not awesome about the code? What challenges did you face trying to write/refactor it?
-- Lines 17-31: handleDeleteColors function. This function handles a lot. To refactor, we could have made it into a thunk and/or broken it our into separate functions.
+#### Link to a specific block of your code on GitHub that you feel not great about
+[sad code](https://github.com/MRKrog/palette-ui/blob/master/src/containers/Modal/Modal.js)
 
- #### Link to Design Inspiration
+* Why do you feel not awesome about the code? What challenges did you face trying to write/refactor it?
+- Lines 32-49: for the handleSendPalette instance method we created for the modal, I wish I could of refactored this more/simpler. I could not figure out a way to send the correct object without recreating it before posted it to the backend. The variable sendPalette is a bit bulky, but was necessary because I could not figure out a way to supply the fetch call a premade variable. As well from lines 54 - 92 I feel like this is a big chunk of jsx that could of been broken down into smaller components. For what we had to do, and was required for saving a palette it took a lot of code to make happen that I would want to have be simpler and broken down for better developer empathy. Overall this component was my biggest challenge and in the future I would go want to create more components and break it down into smaller pieces of jsx.
 
- * Show us what you used as design inspiration (another color picker site, a dribbble UI element, a user flow, etc.) and explain what you stole from it  
-[design inspiration](https://dribbble.com/shots/6229834-Language-learning-iOS-app)    
-- We stole the design of the button(s). The color of the buttons really stand out and it looks really fun and modern which is the theme of our paLit picker app.
+#### Link to Design Inspiration
 
- #### Reflection on New Concepts
+[design inspiration](https://coolors.co/app)
+- I took the design of having the colors display 100% width/height of the app, from coolors.co. I thought it looked clean and simple as well as the best user experience because when picking color combinations you would want to see them together and how they mesh.
+- For the modal, project window and buttons, we came up with the design ourselves. Using Material UI for the functionality of the project window, we wanted to have this app be a complete single page application. We wanted simplicity with minimal focus on anything other than the color combinations.
 
- * Describe your thoughts on server-side testing  
-- It is still a bit unfamiliar, yet it seems worthwhile and not as difficult as some front-end tests can be.
-* Describe your thoughts on TravisCI  
-- Once you know how to set it up, it's not too difficult to use. The only drawback is that it is extremely slow and you have to wait for it to finish. TravisCI could be really useful for Continuous Integration and making sure that there are no bugs before the changes are deployed to your app.
+#### Reflection on New Concepts
+
+* Describe your thoughts on server-side testing
+- Easier than frontend testing, which made learning in testing the server side simpler to grasp. I really enjoyed how straight forward it is to test routes and their happy sad paths.
+* Describe your thoughts on TravisCI
+- When using TravisCI at first I thought it was a bit complicated and over engineered. After finally getting it implemented it all makes a lot more sense. It is super powerful to have a seamless transition when pushing code to Github. It is extremely user friendly to be able to push code to Github which will then go through all your tests, and then push the code live to Heroku.
 * Describe your thoughts in creating a single project whose codebase was distributed across multiple repositories
-- It was easier to organize and break it out into FE and BE repositories - yet have the two connected.
+- Working together as team it was extremely useful to have two separate repositories. One of could be working the backend, while the other would be working on the frontend. This allowed for efficient utilization time programming and not worrying about conflicting code. Also when we wanted to switch roles, it was easy to do, when you are working solo in the codebase. Also helps with separation of concerns in regards to developer empathy.
+
 #### Please feel free to ask any other questions or make any other statements below!
 
- Anything else you wanna say!
+Anything else you wanna say!
 
- -----
+-----
 
 
- # Instructor Feedback (Instructor Name)
+# Instructor Feedback (Instructor Name)
 
- ## Specification Adherence
+## Specification Adherence
 
- **x score**: 
+**x score**:
 
- ## User Interface
+## User Interface
 
- **x score**: 
+**x score**:
 
- ## Testing
+## Testing
 
- **x score**: 
+**x score**:
 
- ## Workflow
+## Workflow
 
- **x score**: 
+**x score**:
 
- # Outcome: pass/fail
+# Outcome: pass/fail
